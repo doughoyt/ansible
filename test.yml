@@ -18,6 +18,6 @@
     lineinfile:
       backrefs: true
       path: "{{ config_path }}"
-      regex: "(.*<add key\s*=\s*[\"|']{{ item. key }}[\"|']\s*value\s*=\s*)[\"|'].*?[\"|'](\s*\/>)"
-      line: "\1{{ item.value }}\2"
+      regex: "(.*<add key\\s*=\\s*[\"|']{{ item. key }}[\"|']\\s*value\\s*=\\s*)[\"|'].*?[\"|'](\\s*\/>)"
+      line: "\\1{{ item.value }}\\2"
     loop: "{{ envParams }}"

@@ -1,11 +1,13 @@
 ---
+config_path: /tmp/web.config
+
 - name: Test playbook
   hosts: all
 
   tasks:
   - name: Cat current config
     lineinfile:
-      path: /tmp/web.config
+      path: "{{ config_path }}"
       line: This is a new line
       state: present
       create: true

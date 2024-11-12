@@ -5,8 +5,10 @@
   vars:
     config_path: /tmp/web.config
     envParams:
-    - [LoginUrl, "This is a test"]
-    - [proxy, YES]
+    - key: LoginUrl
+      value: "This is a test"
+    - key: proxy 
+      value: YES
     configs: "{{ envParams | map('split', '=') | list }}"
     #- { regex: 'XXX', line: 'YYY' }
     #- { regex: 'WWW', line: 'ZZZ' }
@@ -16,6 +18,6 @@
     lineinfile:
       backrefs: true
       path: "{{ config_path }}"
-      regex: "{{ item.first }}"
-      line: "{{ item.second }}"
+      regex: "{{ item.key }}"
+      line: "{{ item.value }}"
     loop: "{{ envParams }}"

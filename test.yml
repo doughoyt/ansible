@@ -1,0 +1,12 @@
+---
+- name: Test playbook
+  hosts: all
+
+  tasks:
+  - name: Cat current config
+    command: cat /tmp/web.config
+    register: cat_output
+
+  - name: Print
+    debug:
+      msg: {{cat_output.stdout}}

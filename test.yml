@@ -8,7 +8,7 @@
     - key: LoginUrl
       value: "This is a test"
     - key: proxy 
-      value: YES
+      value: "YES"
     configs: "{{ envParams | map('split', '=') | list }}"
     #- { regex: 'XXX', line: 'YYY' }
     #- { regex: 'WWW', line: 'ZZZ' }
@@ -18,6 +18,6 @@
     lineinfile:
       backrefs: true
       path: "{{ config_path }}"
-      regex: "{{ item.key }}"
-      line: "<add key=\"{{ item.key }}\" value=\"{{ item.value }}\" />"
+      regex: "(.*<add key\s*=\s*["|']{{ item. key }}["|']\s*value\s*=\s*)["|'].*?["|'](\s*\/>)"
+      line: "\1{{ item.value }}\2"
     loop: "{{ envParams }}"

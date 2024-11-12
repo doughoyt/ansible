@@ -13,11 +13,11 @@
     
 
   tasks:
-  - name: Display users
-  debug:
-    msg: "{{ item }}"
-  with_items:
-    - "{{ configs }}"
+  - name: Display config
+    debug:
+      msg: "{{ item }}"
+    with_items:
+      - "{{ configs }}"
     
   #- name: Cat current config
   #  lineinfile:

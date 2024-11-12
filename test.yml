@@ -19,5 +19,5 @@
       backrefs: true
       path: "{{ config_path }}"
       regex: "{{ item.key }}"
-      line: "{{ item.value }}"
+      line: "<add key=\"{{ item.key }}\" value=\"{{ item.value }}\" />"
     loop: "{{ envParams }}"

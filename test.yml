@@ -12,6 +12,7 @@
   tasks:
   - name: Cat current config
     lineinfile:
+      backrefs: true
       path: "{{ config_path }}"
       regex: "{{ item.regex }}"
       line: "{{ item.line }}"

@@ -13,7 +13,7 @@
     #- { regex: 'XXX', line: 'YYY' }
     #- { regex: 'WWW', line: 'ZZZ' }
     
-
+  tasks:
   - name: Cat current config
     lineinfile:
       backrefs: true

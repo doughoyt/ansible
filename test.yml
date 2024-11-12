@@ -4,4 +4,8 @@
 
   tasks:
   - name: Cat current config
-    msg: "{{ lookup('ansible.builtin.file', '/tmp/web.config') }}"
+    lineinfile:
+      path: /tmp/web.config
+      line: This is a new line
+      state: present
+      create: true

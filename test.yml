@@ -4,16 +4,25 @@
 
   vars:
     config_path: /tmp/web.config
-    configs:
-    - { regex: 'XXX', line: 'YYY' }
-    - { regex: 'WWW', line: 'ZZZ' }
+    envParams:
+    - LoginUrl="This is a test"
+    - proxy=YES
+    configs: "{{ envParams | map('split', '=') | list }}"
+    #- { regex: 'XXX', line: 'YYY' }
+    #- { regex: 'WWW', line: 'ZZZ' }
     
 
   tasks:
-  - name: Cat current config
-    lineinfile:
-      backrefs: true
-      path: "{{ config_path }}"
-      regex: "{{ item.regex }}"
-      line: "{{ item.line }}"
-    loop: "{{ configs }}"
+  - name: Display users
+  debug:
+    msg: "{{ item }}"
+  with_items:
+    - "{{ configs }}"
+    
+  #- name: Cat current config
+  #  lineinfile:
+  #    backrefs: true
+  #    path: "{{ config_path }}"
+  #    regex: "{{ item.regex }}"
+  #    line: "{{ item.line }}"
+  #  loop: "{{ configs }}"

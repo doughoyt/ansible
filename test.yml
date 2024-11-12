@@ -5,8 +5,8 @@
   tasks:
   - name: Cat current config
     command: cat /tmp/web.config
-    register: cat_output
+    register: command_output
 
   - name: Print
     debug:
-      msg: "{{cat_output.stdout}}"
+      msg: "{{command_output.stdout}}"

@@ -1,8 +1,9 @@
 ---
-config_path: /tmp/web.config
-
 - name: Test playbook
   hosts: all
+
+  vars:
+    config_path: /tmp/web.config
 
   tasks:
   - name: Cat current config

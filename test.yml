@@ -4,9 +4,4 @@
 
   tasks:
   - name: Cat current config
-    command: cat /tmp/web.config
-    register: command_output
-
-  - name: Print
-    debug:
-      msg: "{{command_output.stdout}}"
+    msg: "{{ lookup('ansible.builtin.file', '/tmp/web.config') }}"
